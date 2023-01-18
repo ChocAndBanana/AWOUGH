@@ -88,7 +88,7 @@ void insertion()
         scanf("%[^\n]", fivestudents.place);
         puts("Insert your log time(hh:mm, dd/mm/yyyy): ");
         scanf("%[^\n]", fivestudents.logTime);
-    fprintf(userlog, "%s#%s\n", fivestudents.name, fivestudents.place);
+    fprintf(userlog, "%s#%s#%s\n", fivestudents.name, fivestudents.place);
     fclose(userlog);
 }
 
@@ -384,8 +384,10 @@ void login(){
 }
 
 void main(){
-    int accChoice;
+    char accChoice;
 
+    while (true)
+    {
     printf("|================================|\n");
     printf("|  1. Login                      |\n");
     printf("|  2. Register                   |\n");
@@ -393,15 +395,17 @@ void main(){
     printf("|                                |\n");
     printf("|  Press other key to exit       |\n");
     printf("|================================|\n");
-    scanf("%d", &accChoice);
+    scanf("%c", &accChoice);
 
     switch (accChoice)
     {
-    case 1:
+    case '1':
         login();
+        getchar();
         break;
-    case 2:
+    case '2':
         registration();
+        getchar();
         break;
     default:
         printf("Ni ai wo wo ai ni\n");
@@ -414,7 +418,9 @@ void main(){
     {
         stylemenu();
     }
+    }
     
+        
     // stylemenu();
     // login();
     // returning();
