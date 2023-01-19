@@ -202,7 +202,7 @@ void borrow(){
     fclose(replace);
     }
 
-void returning(){
+void returning() {
     listbuku = fopen("listbuku.txt", "r");
     replace = fopen("replace.txt", "a");
 
@@ -212,20 +212,23 @@ void returning(){
     char judul[50];
     int cmp;
     bool isFound = false;
-    scanf("%[^\n]", &returning);
+    scanf("%[^\n]", returning);
 
+    
     while(!feof(listbuku)) {
         // rewind(listbuku);
         fscanf(listbuku, "%[^\n]\n", judul);
         // printf("%s", judul);
         cmp = strcmp(returning, judul);
         // printf("%d", cmp);
+
         if(cmp==0) {
             printf("Thank you for returning the book!\n");
             isFound = true;
             break;
         }
     }
+    
          if (cmp != 0)
          {
              printf("Book not found in database!");
@@ -235,8 +238,8 @@ void returning(){
     if (isFound == true)
     {
         // printf("1");
-    }
         fprintf(replace, "\n%s", returning);
+    }
 //    } else {
 //        printf("Book not found in database!");
 //        printf("2");
@@ -257,7 +260,31 @@ void returning(){
     //         printf("Error.\n");
     //         exit(1);
     // } 
+
 }
+
+// void returning(){
+//     listbuku = fopen("listbuku.txt", "r"); //Open file 1
+//     replace = fopen("replace.txt", "a"); // Open file 2
+//     if(replace == NULL || listbuku == NULL){
+//         printf("Can't open File.");
+//         exit(0);
+//     }
+
+//     char singleline[100];
+//     printf("Judul Buku yang ingin dikembalikan :\n");
+//     scanf("%[^\n]", singleline);
+//     while(!feof(listbuku)) {
+//         fscanf(listbuku, " %[^\n]", buku1.judul);
+//         if (strcmp(buku1.judul, singleline) == 0) {
+//             fprintf(replace, "%s\n", buku1.judul);
+//             printf("Buku '%s' sudah dikembalikan\n", singleline);
+//         }
+//     }
+//     fclose(listbuku);
+//     fclose(replace);
+// }
+
 
 
 void stylemenu(){
@@ -302,6 +329,7 @@ void stylemenu(){
         borrow();
         break;
         case 4:
+        getchar();
         returning();
         break;
         case 5:
