@@ -35,6 +35,13 @@ void reading(){
     printf("Judul Buku :\n");
     while(!feof(replace)){
         fgets(singleline, 50, replace);
+
+        if (strcmp(singleline, "\n") == 0)
+        {
+            i--;
+            continue;
+        }
+
         printf("%d. %s\n", i + 1, singleline);
         i++;
     }
